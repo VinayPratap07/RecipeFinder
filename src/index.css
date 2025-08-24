@@ -1,0 +1,60 @@
+/* General Body Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7fafc; /* Light gray background for a soft feel */
+    color: #2d3748; /* Darker text for better contrast */
+}
+
+/* Header Styling */
+.HeaderComp {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle bottom shadow for depth */
+    margin-bottom: 2rem;
+}
+
+/* Main Content Container - Using Grid for better spacing */
+.HomeDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Consistent spacing between cards */
+    padding: 0 2rem;
+    justify-items: center;
+}
+
+/* Card Component Styling */
+.card {
+    background-color: white;
+    border-radius: 12px; /* Softer, rounded corners */
+    overflow: hidden; /* Ensures the image respects the rounded corners */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    width: 100%;
+    max-width: 350px; /* Max width for consistency */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lifts the card on hover */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Card Image */
+.card .cardImage {
+    width: 100%;
+    height: 200px; /* Adjusted height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+/* Card Text/Title */
+.cardText {
+    padding: 1.5rem;
+    font-size: 1.25rem; /* Slightly smaller for a cleaner look */
+    font-weight: 600; /* Semi-bold is often more modern than bold */
+    color: #1a202c;
+    text-align: left; /* Left-aligned text is easier to read */
+}
