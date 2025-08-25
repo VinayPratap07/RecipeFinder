@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home.tsx'
-import Whishlist from './Components/Whishlist.tsx'
+import Wishlist from './Components/Wishlist.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Meal from './Components/Meal.tsx'
 
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
-        path: 'whishlist',
-        element: <Whishlist/>
+        path: 'wishlist',
+        element: <Wishlist/>
       },
       {
         path: '/:idMeal',

@@ -49,7 +49,7 @@ function Home() {
     <div className="HomeDiv">
       {data?.length > 0 ? (
         data.map((meal) => (
-          <Card key={meal.idMeal} img={meal.strMealThumb} title={meal.strMeal} id={meal.idMeal} />
+          <Card key={meal.idMeal} img={meal.strMealThumb} title={meal.strMeal} id={meal.idMeal}/>
         ))
         
       ) : (

@@ -3,8 +3,16 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7fafc; /* Light gray background for a soft feel */
-    color: #2d3748; /* Darker text for better contrast */
+    background-color: #f7fafc; 
+    color: #2d3748; 
+}
+/*Nav Link styles*/
+.navLinksStyle{
+    text-decoration: none;
+    color: black
+}
+.navLinksStyle.active{
+    color: #3B82F6;
 }
 
 /* Header Styling */
@@ -14,15 +22,51 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle bottom shadow for depth */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
     margin-bottom: 2rem;
+}
+
+/*Input Bpx*/
+.inputSearchBox{
+    width: 50%;
+}
+
+/*Input Bar*/
+.inputBar{
+    width: 70%;
+    padding: 0.5rem 1rem; 
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 4px;
+    transition: transform 0.3s ease, padding 0.3s ease, width 0.3s ease;
+}
+.inputBar:hover{
+    width:72%;
+    padding: 0.7rem 1.2rem; 
+}
+.inputBar:focus{
+    width:72%;
+    padding: 0.7rem 1.2rem; 
+    outline: none;
+    border-bottom: 1px solid #3B82F6;
+    border-radius: 4px;
+}
+
+/*Search button*/
+.searchBtn button {
+  padding: 0.5rem 1rem; 
+  border: none;
+  cursor: pointer;
+  margin: 0.5rem;
+  background-color: white;
+  font-size: 1rem;;
 }
 
 /* Main Content Container - Using Grid for better spacing */
 .HomeDiv {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 2rem; /* Consistent spacing between cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; 
     padding: 0 2rem;
     justify-items: center;
 }
@@ -30,31 +74,134 @@ body {
 /* Card Component Styling */
 .card {
     background-color: white;
-    border-radius: 12px; /* Softer, rounded corners */
-    overflow: hidden; /* Ensures the image respects the rounded corners */
+    border-radius: 12px; 
+    overflow: hidden; 
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     width: 100%;
-    max-width: 350px; /* Max width for consistency */
+    max-width: 350px; 
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Lifts the card on hover */
+    transform: translateY(-5px); 
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Card Image */
 .card .cardImage {
     width: 100%;
-    height: 200px; /* Adjusted height */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+    height: 200px; 
+    object-fit: cover; 
 }
 
 /* Card Text/Title */
 .cardText {
     padding: 1.5rem;
-    font-size: 1.25rem; /* Slightly smaller for a cleaner look */
-    font-weight: 600; /* Semi-bold is often more modern than bold */
+    font-size: 1.25rem; 
+    font-weight: 600; 
     color: #1a202c;
-    text-align: left; /* Left-aligned text is easier to read */
+    text-align: left; 
 }
+.cardWhishListBtn{
+    margin-left: auto;
+    background-color: pink;
+    border:rgba(0, 0, 0, 0);
+
+    
+}
+
+
+
+
+
+/* --- Footer General Styles --- */
+.footer {
+  background-color: #1f2937; 
+  color: white;
+  margin-top: 3rem; 
+}
+
+.footer-container {
+  max-width: 80rem; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem 1rem; 
+}
+
+/* --- Footer Grid Layout --- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr)); 
+  gap: 2rem; /* gap-8 */
+}
+
+/* --- Content Sections --- */
+.footer-about, .footer-links, .footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
+
+.footer-section-title {
+  font-size: 1.125rem; 
+  font-weight: 600; 
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.footer-about h3 {
+  font-size: 1.5rem; 
+  font-weight: 700; 
+}
+
+.footer-about p, .footer-copyright p {
+  color: #9ca3af; 
+}
+
+/* --- Links and Icons --- */
+.footer-links-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; 
+}
+
+.footer-links-list a, .footer-social-icons a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-links-list a:hover {
+  color: #60a5fa; 
+}
+
+.footer-social-icons {
+  margin-top: 1rem; 
+  display: flex;
+  gap: 1.5rem; 
+}
+
+.footer-social-icons a {
+  color: #9ca3af; 
+}
+
+.footer-social-icons a:hover {
+  color: white; 
+}
+
+.footer-social-icons svg {
+  width: 1.5rem; /* w-6 */
+  height: 1.5rem; /* h-6 */
+}
+
+/* --- Copyright Section --- */
+.footer-copyright {
+  margin-top: 3rem; 
+  border-top: 1px solid #374151;
+  padding-top: 2rem; /* pt-8 */
+  text-align: center;
+}
+
