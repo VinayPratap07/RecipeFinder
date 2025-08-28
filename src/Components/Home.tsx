@@ -1,37 +1,18 @@
-import {useContext} from 'react'
-import userContext from "../Context/userContext"
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { Card } from './Card';
 
-function Home() {
-  const { recipe } = useContext(userContext);
+async function fetchRecipe() {
+    const randomMeal = axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
 
-  async function fetchRecipe() {
-    // Search by name
-    const nameApi = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipe}`;
-    const ingredientApi = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${recipe}`;
-
-    const [nameRes, ingredientRes] = await Promise.all([
-      axios.get(nameApi),
-      axios.get(ingredientApi)
-    ]);
-
-    const nameMeals = nameRes.data.meals || [];
-    const ingredientMeals = ingredientRes.data.meals || [];
-
-    // merge results and remove duplicates
-    const allMeals = [...nameMeals, ...ingredientMeals];
-    const uniqueMeals = allMeals.filter(
-      (meal, index, self) =>
-        index === self.findIndex((m) => m.idMeal === meal.idMeal)
-    );
-
-    return uniqueMeals;
+    return (await randomMeal).data.meals;
   }
 
+
+function Home() {  
+
   const { isLoading, error, data } = useQuery({
-    queryKey: ['recipeSearch', recipe],
+    queryKey: ['recipeSearch'],
     queryFn: fetchRecipe,
     staleTime: 1000,
     refetchOnWindowFocus: false,

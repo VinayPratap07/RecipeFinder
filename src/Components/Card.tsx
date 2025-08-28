@@ -11,7 +11,7 @@ type CardProps = {
 
 export const Card = ({id, img, title, }:CardProps) => {
 
-  const {mealID,setMealID} = useContext(userContext);
+  const {mealID, setMealID} = useContext(userContext);
 
   const isInWishlist = mealID.includes(id);
 
@@ -30,7 +30,10 @@ export const Card = ({id, img, title, }:CardProps) => {
           <img src={img} className="cardImage" ></img>
           <p className="cardText" > {title}</p>
       </NavLink>
-      <button className="cardWhishListBtn" onClick={addItemToWhishlist}>{isInWishlist? "Remove": "Add"}</button>
+      <button className={isInWishlist? "cardBtn ActiveCardBtn" : "cardBtn"}
+        onClick={addItemToWhishlist}>
+        {isInWishlist? "Added": "Add"}
+      </button>
     </div>
   )
 };

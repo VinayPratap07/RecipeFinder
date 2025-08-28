@@ -7,6 +7,7 @@ import Home from './Components/Home.tsx'
 import Wishlist from './Components/Wishlist.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Meal from './Components/Meal.tsx'
+import Searched from './Components/Searched.tsx'
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,9 @@ const router = createBrowserRouter([
       {
         path: 'wishlist',
         element: <Wishlist/>
+      },{
+        path: 'search/:strMeal',
+        element: <Searched/>
       },
       {
         path: '/:idMeal',
