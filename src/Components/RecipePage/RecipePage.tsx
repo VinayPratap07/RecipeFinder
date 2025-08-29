@@ -27,9 +27,6 @@ const {isLoading, error, data:recipe} = useQuery({
         return <h3>Error: {error.message}</h3>;
     }
 
-    console.log(recipe)
-
-
     return (
             <div className="recipePage">
                 <header className='recipeHeader'>

@@ -93,8 +93,9 @@ Example endpoints:
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots 
 ![ScreenShot](uiImage.png)
+![ScreenShot](RecipePageUI.png)
 
 ---
 
