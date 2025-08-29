@@ -34,8 +34,8 @@ function Header() {
         <NavLink className={({isActive})=>isActive? "navLinksStyle active" :  "navLinksStyle"} to="/" >
             Home
         </NavLink>
-        <NavLink className="navLinksStyle" to="/wishlist">
-            Wishlist
+        <NavLink className="navLinksStyle" to="/favourite">
+            Favourite
         </NavLink>
     </div>
     </>

@@ -3,8 +3,9 @@ import userContext from "../Context/userContext";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "./Card";
+import Loader from "./Loader/Loader";
 
-function Whishlist() {
+function Favourite() {
   const { mealID } = useContext(userContext); 
   const fetchWhishlist = async () => {
     if (mealID.length === 0) return []; // nothing to fetch
@@ -33,7 +34,7 @@ function Whishlist() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><Loader/></div>;
   }
   if (error) {
     return <div>Error</div>;
@@ -48,4 +49,4 @@ function Whishlist() {
   );
 }
 
-export default Whishlist;
+export default Favourite;

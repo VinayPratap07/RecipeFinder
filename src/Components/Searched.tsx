@@ -4,6 +4,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "./Card";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader/Loader";
 
 function Searched() {
     const {recipe} = useContext(userContext);
@@ -42,7 +43,7 @@ function Searched() {
 
 
   if(isLoading){
-    return <div>Loading...</div>
+    return <div><Loader/></div>
   }
   if(error){
     return<div>Error</div>

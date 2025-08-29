@@ -4,10 +4,11 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home.tsx'
-import Wishlist from './Components/Wishlist.tsx'
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Meal from './Components/Meal.tsx'
 import Searched from './Components/Searched.tsx'
+import Favourite from './Components/Favourite.tsx'
+import RecipePage from './Components/RecipePage/RecipePage.tsx'
 
 
 const router = createBrowserRouter([
@@ -20,15 +21,15 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
-        path: 'wishlist',
-        element: <Wishlist/>
+        path: 'favourite',
+        element: <Favourite/>
       },{
         path: 'search/:strMeal',
         element: <Searched/>
       },
       {
         path: '/:idMeal',
-        element: <Meal/>
+        element: <RecipePage/>
       }
     ]
   }

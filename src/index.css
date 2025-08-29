@@ -103,12 +103,14 @@ body {
     text-align: left; 
 }
 .cardBtn{
+    position: relative;
+    bottom: 85%;
+    left: 75%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 8px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #333;
