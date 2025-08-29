@@ -1,69 +1,108 @@
-# React + TypeScript + Vite
+# 🍽️ Recipe Finder  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application to search, discover, and save your favourite recipes using [TheMealDB API](https://www.themealdb.com/).  
 
-Currently, two official plugins are available:
+Users can:  
+- 🔍 Search recipes by name or ingredients  
+- 🎲 Explore random recipes  
+- ❤️ Add/remove meals from their favourites (wishlist)  
+- 📖 View detailed recipe pages with ingredients & instructions  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
+- **React + TypeScript** for type safety and modular structure  
+- **React Router v6** for navigation (`Home`, `Search`, `Favourite`, `Recipe Page`)  
+- **TanStack Query (React Query)** for data fetching & caching  
+- **Context API** for global state management (recipe search & wishlist)  
+- **Responsive UI** with clean CSS styling  
+- **Custom Loader** for a polished loading state  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
+- ⚛️ React 18  
+- 🟦 TypeScript  
+- 🌐 React Router DOM  
+- 📡 TanStack React Query  
+- 🎨 Custom CSS  
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Project Structure
+```
+src/
+│── Components/
+│   ├── Card.tsx
+│   ├── Favourite.tsx
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── Home.tsx
+│   ├── Loader/
+│   │   └── Loader.tsx
+│   │   └── Loader.css
+│   ├── RecipePage/
+│   │   └── RecipePage.tsx
+│   │   └── RecipePage.css
+│   └── Searched.tsx
+│
+│── Context/
+│   ├── userContext.ts
+│   └── userContextProvider.tsx
+│
+│── App.tsx
+│── index.tsx
+│── index.css
+│── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚡ Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+```bash
+git clone https://github.com/VinayPratap07/RecipeFinder.git
+cd RecipeFinder
 ```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start development server
+```bash
+npm run dev
+```
+
+### 4. Build for production
+```bash
+npm run build
+```
+
+---
+
+## 🔑 API Used
+- [TheMealDB](https://www.themealdb.com/api.php) – free API for meal recipes  
+
+Example endpoints:  
+- Random meal → `https://www.themealdb.com/api/json/v1/1/random.php`  
+- Search by name → `https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata`  
+- Lookup by ID → `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`   
+
+---
+
+## 📸 Screenshots (Optional)
+![ScreenShot](uiImage.png)
+
+---
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome!  
+Feel free to open a PR or suggest improvements.  
+
+---
+
+## 📜 License
+This project is **open-source** under the MIT License.  
