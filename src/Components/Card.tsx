@@ -27,7 +27,7 @@ export const Card = ({id, img, title, }:CardProps) => {
   return (
     <div className="card">
       <NavLink className="navLinksStyle" to={`/${id}`}>
-          <img src={img} className="cardImage" ></img>
+          <img src={img} className="cardImage" alt={title} ></img>
           <p className="cardText" > {title}</p>
       </NavLink>
       <button className={isInWishlist? "cardBtn ActiveCardBtn" : "cardBtn"}
