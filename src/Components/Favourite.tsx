@@ -9,7 +9,7 @@ import { getMealById } from "../APICalls/GetApi";
 function Favourite() {
   const { mealID } = useContext(userContext); 
 
-  const fetchFavourate = async () => {
+  const fetchFavourite = async () => {
     if (mealID.length === 0) return []; // nothing to fetch
 
     // fetch each meal by ID
@@ -25,10 +25,10 @@ function Favourite() {
   const {
     isLoading,
     error,
-    data: FavourateMeal,
+    data: favouriteMeal,
   } = useQuery({
     queryKey: ["meals", mealID],
-    queryFn: fetchFavourate,
+    queryFn: fetchFavourite,
     enabled: mealID.length > 0, 
     staleTime: 1000,
     refetchOnWindowFocus: false,
@@ -44,7 +44,7 @@ function Favourite() {
 
   return (
     <div className="HomeDiv">
-      {FavourateMeal?.map((meal) => (
+      {favouriteMeal?.map((meal) => (
         <Card key={meal.idMeal} 
             img={meal.strMealThumb} 
             title={meal.strMeal} 

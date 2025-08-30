@@ -32,7 +32,13 @@ Users can:
 ## 📂 Project Structure
 ```
 src/
+│── APICalls/
+│   ├── GetAPi.ts
+│
 │── Components/
+│   ├── Error/
+│   │   └── Error.tsx
+│   │   └── Error.css
 │   ├── Card.tsx
 │   ├── Favourite.tsx
 │   ├── Header.tsx
@@ -89,6 +95,7 @@ npm run build
 Example endpoints:  
 - Random meal → `https://www.themealdb.com/api/json/v1/1/random.php`  
 - Search by name → `https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata`  
+- Search by Ingredient → `https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast` 
 - Lookup by ID → `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`   
 
 ---
