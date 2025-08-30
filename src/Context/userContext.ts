@@ -1,13 +1,18 @@
 import React from "react";
 import { createContext } from "react";
 
-type UserContextType = {
-  recipe: string | null;
-  setRecipe: React.Dispatch<React.SetStateAction<string | null>>;
-  mealID: (string | number)[];
-  setMealID: React.Dispatch<React.SetStateAction<(string | number)[]>>;
+export type UserContextType = {
+  recipe: string ;
+  setRecipe: React.Dispatch<React.SetStateAction<string >>;
+  mealID: string [];
+  setMealID: React.Dispatch<React.SetStateAction<string []>>;
 };
 
-const userContext = createContext<UserContextType | undefined>(undefined);
+const userContext = createContext<UserContextType>({
+  recipe: "",
+  setRecipe: () => {}, // empty function (real one comes from Provider)
+  mealID: [],
+  setMealID: () => {}, // empty function (real one comes from Provider)
+});
 
 export default userContext;

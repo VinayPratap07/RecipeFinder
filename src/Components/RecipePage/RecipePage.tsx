@@ -4,17 +4,18 @@ import Loader from '../Loader/Loader';
 import './RecipePage.css'
 import Error from '../Error/Error';
 import { getMealById } from '../../APICalls/GetApi';
+import type { Meal } from '../../APICalls/ApiRespone';
 
 const RecipePage = () => {
     const {idMeal} = useParams();
 
 
-    async function fetchMealById() {
-    const res = await getMealById(idMeal);
+    async function fetchMealById(): Promise<Meal> {
+    const res = await getMealById(idMeal as string);
     return res.data.meals[0];
     }
 
-    const {isLoading, error, data:recipe} = useQuery({
+    const {isLoading, error, data: recipe} = useQuery({
         queryKey: ['recipe', idMeal],
         queryFn: fetchMealById,
         staleTime: 10000
@@ -23,7 +24,7 @@ const RecipePage = () => {
     if (isLoading) {
         return <div><Loader/></div>;
     }
-    if (error) {
+    if (error|| !recipe) {
         return <div><Error/> </div>;
     }
 

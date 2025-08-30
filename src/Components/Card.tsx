@@ -5,13 +5,16 @@ import userContext from "../Context/userContext";
 type CardProps = {
   img?: string;
   title?: string;
-  id?: number;
+  id: string;
 };
 
 
 export const Card = ({id, img, title, }:CardProps) => {
-
-  const {mealID, setMealID} = useContext(userContext);
+  const context = useContext(userContext);
+    if (!context) {
+      throw new Error("Card must be used within UserContextProvider");
+    }
+    const { mealID, setMealID } = context;
 
   const isInWishlist = mealID.includes(id);
 

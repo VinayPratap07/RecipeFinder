@@ -5,9 +5,11 @@ import { Card } from "./Card";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 import { getMealById } from "../APICalls/GetApi";
+import type { Meal } from "../APICalls/ApiRespone";
 
 function Favourite() {
-  const { mealID } = useContext(userContext); 
+
+    const { mealID} = useContext(userContext);
 
   const fetchFavourite = async () => {
     if (mealID.length === 0) return []; // nothing to fetch
@@ -19,14 +21,14 @@ function Favourite() {
     });
 
     const results = await Promise.all(requests);
-    return results.filter(Boolean); 
+    return results.filter((meal:any): meal is Meal => meal !== null);
     };
 
   const {
     isLoading,
     error,
     data: favouriteMeal,
-  } = useQuery({
+  } = useQuery<Meal[]>({
     queryKey: ["meals", mealID],
     queryFn: fetchFavourite,
     enabled: mealID.length > 0, 

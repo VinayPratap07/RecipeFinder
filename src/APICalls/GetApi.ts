@@ -9,11 +9,11 @@ export const getMealById = (id:number|string)=>{
     return api.get(`lookup.php?i=${id}`);
 }
 
-export const searchMealByName = (name:string)=>{
+export const searchMealByName = (name:string | undefined)=>{
     return api.get(`search.php?s=${name}`);
 }
 
-export const searchMealByIngredient = (name:string)=>{
+export const searchMealByIngredient = (name:string | undefined)=>{
     return api.get(`filter.php?i=${name}`);
 }
 

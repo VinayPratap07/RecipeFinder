@@ -7,7 +7,10 @@ function Header() {
     const [input, setInput] = useState('');
     const navigate = useNavigate();
 
-    const {setRecipe} = useContext(userContext)
+    const context = useContext(userContext);
+    if (!context) throw new Error("Component must be wrapped in UserContextProvider");
+
+    const { setRecipe } = context;
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
       e.preventDefault();

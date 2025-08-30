@@ -3,16 +3,17 @@ import { Card } from './Card';
 import Loader from './Loader/Loader';
 import Error from './Error/Error';
 import { getRandomMeal } from '../APICalls/GetApi';
+import type { Meal } from '../APICalls/ApiRespone';
 
 async function fetchRecipe() {
     const randomMeal = await getRandomMeal();
-    return randomMeal.data.meals;
+    return randomMeal.data.meals || [];
   }
 
 
 function Home() {  
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, error, data } = useQuery<Meal[]>({
     queryKey: ['recipeSearch'],
     queryFn: fetchRecipe,
     staleTime: 1000,
@@ -29,7 +30,7 @@ function Home() {
 
   return (
     <div className="HomeDiv">
-      {data?.length > 0 ? (
+      {data && data?.length > 0 ? (
         data.map((meal) => (
           <Card key={meal.idMeal} img={meal.strMealThumb} title={meal.strMeal} id={meal.idMeal}/>
         ))

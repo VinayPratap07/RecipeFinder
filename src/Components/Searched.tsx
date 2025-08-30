@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 import { searchMealByIngredient, searchMealByName } from "../APICalls/GetApi";
+import type { Meal } from "../APICalls/ApiRespone";
 
 function Searched() {
     const {strMeal} = useParams();
@@ -29,7 +30,7 @@ function Searched() {
       return uniqueMeals;
   }
 
-  const {isLoading, error, data } = useQuery({
+  const {isLoading, error, data } = useQuery<Meal[]>({
     queryKey: ['recipeSearch', strMeal],
     queryFn: fetchRecipe,
     staleTime: 1000,
@@ -47,7 +48,7 @@ function Searched() {
 
   return (
     <div className="HomeDiv">
-      {data?.length > 0 ? (
+      {data && data?.length > 0 ? (
         data.map((meal) => (
           <Card key={meal.idMeal} img={meal.strMealThumb} title={meal.strMeal} id={meal.idMeal}/>
         ))     

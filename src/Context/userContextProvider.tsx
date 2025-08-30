@@ -1,15 +1,28 @@
 import { useState } from 'react'
-import userContext from './userContext'
+import type {ReactNode} from 'react'
+import userContext from "./userContext";
+import type { UserContextType } from "./userContext";
 
-const UserContextProvider = ({children}) =>{
-    const [recipe, setRecipe] = useState("");
-    const [mealID, setMealID] = useState([])
+type Props = {
+  children: ReactNode;
+};
+
+const UserContextProvider = ({children}: Props) =>{
+    const [recipe, setRecipe] = useState<string>("");
+    const [mealID, setMealID] = useState<string[]>([]);
+
+    const value: UserContextType = {
+      recipe,
+      setRecipe,
+      mealID,
+      setMealID,
+    };
 
     return (
-        <userContext.Provider value = {{recipe, setRecipe, mealID, setMealID }}>
-            {children}
+        <userContext.Provider value={value}>
+        {children}
         </userContext.Provider>
-    )
+    );
 }
 
 export default UserContextProvider;
