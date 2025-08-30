@@ -32,8 +32,7 @@ function Footer() {
             <h4 className="footer-section-title">Quick Links</h4>
             <ul className="footer-links-list">
               <li><NavLink to="/">Home</NavLink></li>
-              <li><a href="/search">Search Recipes</a></li>
-              <li><NavLink to="/wishlist">My Wishlist</NavLink></li>
+              <li><NavLink to="/favourite">My Wishlist</NavLink></li>
             </ul>
           </div>
 

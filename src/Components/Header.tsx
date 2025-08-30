@@ -9,7 +9,8 @@ function Header() {
 
     const {setRecipe} = useContext(userContext)
 
-    function handleSubmit(){
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+      e.preventDefault();
       if(input.trim()==='') return;
         setRecipe(input);
         navigate(`/search/${input}`);

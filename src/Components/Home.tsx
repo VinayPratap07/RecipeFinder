@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import { Card } from './Card';
 import Loader from './Loader/Loader';
+import Error from './Error/Error';
+import { getRandomMeal } from '../APICalls/GetApi';
 
 async function fetchRecipe() {
-    const randomMeal = axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-
-    return (await randomMeal).data.meals;
+    const randomMeal = await getRandomMeal();
+    return randomMeal.data.meals;
   }
 
 
@@ -24,7 +24,7 @@ function Home() {
     return <div><Loader/></div>
   }
   if (error) {
-    return <div>Error</div>
+    return <div><Error/></div>
   }
 
   return (

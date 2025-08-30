@@ -1,30 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import './RecipePage.css'
+import Error from '../Error/Error';
+import { getMealById } from '../../APICalls/GetApi';
 
 const RecipePage = () => {
     const {idMeal} = useParams();
 
 
-async function fetchMealById() {
-  const api = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
-  const res = await axios.get(api);
-  return res.data.meals[0];
-}
+    async function fetchMealById() {
+    const res = await getMealById(idMeal);
+    return res.data.meals[0];
+    }
 
-const {isLoading, error, data:recipe} = useQuery({
-    queryKey: ['recipe', idMeal],
-    queryFn: fetchMealById,
-    staleTime: 10000
-})
+    const {isLoading, error, data:recipe} = useQuery({
+        queryKey: ['recipe', idMeal],
+        queryFn: fetchMealById,
+        staleTime: 10000
+    })
 
     if (isLoading) {
         return <div><Loader/></div>;
     }
     if (error) {
-        return <h3>Error: {error.message}</h3>;
+        return <div><Error/> </div>;
     }
 
     return (

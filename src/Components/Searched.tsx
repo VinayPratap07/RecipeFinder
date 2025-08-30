@@ -1,40 +1,36 @@
-import { useContext } from "react"
-import userContext from "../Context/userContext";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "./Card";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader/Loader";
+import Error from "./Error/Error";
+import { searchMealByIngredient, searchMealByName } from "../APICalls/GetApi";
 
 function Searched() {
-    const {recipe} = useContext(userContext);
     const {strMeal} = useParams();
 
     async function fetchRecipe() {
-    // Search by name
-    const nameApi = `https://www.themealdb.com/api/json/v1/1/search.php?s=${strMeal}`;
-    const ingredientApi = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${strMeal}`;
 
-    const [nameRes, ingredientRes] = await Promise.all([
-      axios.get(nameApi),
-      axios.get(ingredientApi)
-    ]);
 
-    const nameMeals = nameRes.data.meals || [];
-    const ingredientMeals = ingredientRes.data.meals || [];
+      const [nameRes, ingredientRes] = await Promise.all([
+        searchMealByName(strMeal),
+        searchMealByIngredient(strMeal)
+      ]);
 
-    // merge results and remove duplicates
-    const allMeals = [...nameMeals, ...ingredientMeals];
-    const uniqueMeals = allMeals.filter(
-      (meal, index, self) =>
-        index === self.findIndex((m) => m.idMeal === meal.idMeal)
-    );
+      const nameMeals = nameRes.data.meals || [];
+      const ingredientMeals = ingredientRes.data.meals || [];
 
-    return uniqueMeals;
+      // merge results and remove duplicates
+      const allMeals = [...nameMeals, ...ingredientMeals];
+      const uniqueMeals = allMeals.filter(
+        (meal, index, self) =>
+          index === self.findIndex((m) => m.idMeal === meal.idMeal)
+      );
+
+      return uniqueMeals;
   }
 
   const {isLoading, error, data } = useQuery({
-    queryKey: ['recipeSearch', recipe],
+    queryKey: ['recipeSearch', strMeal],
     queryFn: fetchRecipe,
     staleTime: 1000,
     refetchOnWindowFocus: false,
@@ -46,7 +42,7 @@ function Searched() {
     return <div><Loader/></div>
   }
   if(error){
-    return<div>Error</div>
+    return <div><Error/></div>
   }
 
   return (
