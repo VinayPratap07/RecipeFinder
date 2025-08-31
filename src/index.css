@@ -25,6 +25,9 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
     margin-bottom: 2rem;
 }
+.HeaderComp h1{
+  text-align: center;
+}
 
 /*Input Bpx*/
 .inputSearchBox{
@@ -62,6 +65,46 @@ body {
   font-size: 1rem;;
 }
 
+@media(max-width: 640px){
+  .HeaderComp h1{
+    font-size: 1rem;
+  }
+  .navLinksStyle{
+    font-size: 0.8rem;
+    margin:0.3rem;
+  }
+  .inputSearchBox{
+    width: 40%;
+  }
+  .inputBar{
+    width: 40%;
+    padding: 0rem 0.5rem; 
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 4px;
+  }
+.inputBar:hover{
+    width:41%;
+    padding: 0.2rem 0.8rem; 
+}
+.inputBar:focus{
+    width:41%;
+    padding: 0.2rem 0.8rem; 
+    outline: none;
+    border-bottom: 1px solid #3B82F6;
+    border-radius: 4px;
+}
+
+  .searchBtn {
+  padding: 0rem 0.5rem; 
+  border: none;
+  cursor: pointer;
+  margin: 0.3rem;
+  background-color: white;
+  font-size: 0.8rem;
+  }
+}
+
 /* Main Content Container - Using Grid for better spacing */
 .HomeDiv {
     display: grid;
@@ -74,12 +117,14 @@ body {
 /* Card Component Styling */
 .card {
     background-color: white;
-    border-radius: 12px; 
-    overflow: hidden; 
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 350px; 
+    max-width: 350px;
+    position: relative; 
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -103,23 +148,16 @@ body {
     text-align: left; 
 }
 .cardBtn{
-    position: relative;
-    bottom: 85%;
-    left: 75%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    position: absolute;
+    top: 16px;        
+    right: 16px;      
     padding: 8px 16px;
     font-size: 16px;
-    font-weight: 600;
-    color: #333;
     background-color: #fff;
     border: 2px solid #ddd;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
+    z-index: 10; 
 }
 .cardBtn:hover {
     border-color: #e53e3e; 
@@ -129,6 +167,47 @@ body {
     border-color: #e53e3e; 
     color: #e53e3e;
   }
+
+
+@media (max-width: 640px){
+  .HomeDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem; 
+    padding: 0 1rem;
+    justify-items: center;
+}
+  .card {
+    background-color: white;
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    width: 100%;
+    max-width: 150px; 
+}
+.card .cardImage {
+    width: 100%;
+    height: 150px; 
+    object-fit: cover; 
+}
+.cardText {
+    padding: 1rem;
+    font-size: 1rem; 
+    font-weight: 500; 
+    color: #1a202c;
+    text-align: left; 
+}
+    .cardBtn {
+        top: 8px;
+        right: 8px;
+        padding: 6px 12px;
+        font-size: 14px;
+}
+
+}
+
+
 
 
 
