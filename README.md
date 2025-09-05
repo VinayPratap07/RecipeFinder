@@ -34,6 +34,7 @@ Users can:
 src/
 │── APICalls/
 │   ├── GetAPi.ts
+│   ├── ApiResponse.ts
 │
 │── Components/
 │   ├── Error/
